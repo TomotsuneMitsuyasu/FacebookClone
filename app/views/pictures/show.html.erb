@@ -1,0 +1,15 @@
+<div class="main col-md-6">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>content:</strong>
+    <%= @picture.content %>
+  </p>
+
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag (@picture.image.url) if @picture.image && @picture.image.url %>
+  </p>
+
+  <%= link_to 'Back', pictures_path %>
+</div>
