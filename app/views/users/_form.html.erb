@@ -14,16 +14,16 @@
 <% end %>
 
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :"名前" %>
 
   <%= f.label :email %>
-  <%= f.email_field :email %>
+  <%= f.email_field :"メールアドレス" %>
 
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :"パスワード" %>
 
   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <%= f.password_field :"パスワード（確認用）" %>
 
-  <%= f.submit "Create my account" %>
+  <%= f.submit "アカウント登録" %>
 <% end %>

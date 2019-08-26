@@ -3,7 +3,7 @@ before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
 
   def index
-    @picture = Picture.all
+    @pictures = Picture.all
   end
 
   def show
@@ -12,7 +12,7 @@ before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
   # GET /users/new
   def new
-    @picture = Picture.news
+    @picture = Picture.new
   end
 
   # GET /users/1/edit
@@ -26,15 +26,15 @@ before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
     # respond_to do |format|
     #binding.pry
-      if @pictuer.save
-        redirect_to user_path(@picture), notice: '投稿完了'
+      if @picture.save
+        redirect_to pictures_path(@picture), notice: '投稿完了'
       else
         render 'confirm'
       end
   end
 
   def confirm
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params)
     render :new if @picture.invalid?
   end
 
@@ -58,6 +58,12 @@ before_action :set_picture, only: [:show, :edit, :update, :destroy]
     def set_picture
       @picture = Picture.find(params[:id])
     end
+
+
+    def picture_params
+      params.require(:picture).permit(:caption,:image,:image_cache)
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
